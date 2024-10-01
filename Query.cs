@@ -9,6 +9,13 @@ public static class Query
 
         return book;
     }
+
+    public static async Task<IEnumerable<Book>> GetBooks(IReadOnlyCollection<int> bookIds, [Service] BookDataLoader bookDataLoader, CancellationToken cancellationToken)
+    {
+        var books = await bookDataLoader.LoadAsync(bookIds, cancellationToken);
+
+        return books;
+    }
 }
 
 
