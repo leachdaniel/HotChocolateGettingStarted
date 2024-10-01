@@ -57,7 +57,7 @@ public class AuthorReviewByAuthorIdDataLoader : GroupedDataLoader<int, AuthorRev
         //await Task.Delay(10000);
 
         return keys
-            .SelectMany(x => (Enumerable.Range(0, new Random(x).Next(1, 3))
+            .SelectMany(x => (Enumerable.Range(1, 3/*0, new Random(x).Next(1, 3)*/)
                 .Select(r => new AuthorReview(r + x, x))))
             .ToArray()
             .ToLookup(x => x.AuthorId);
@@ -76,7 +76,7 @@ public class BookReviewByBookIdDataLoader : GroupedDataLoader<int, BookReview>
         //await Task.Delay(10000);
 
         return keys
-            .SelectMany(x => (Enumerable.Range(0, new Random(x).Next(3, 25))
+            .SelectMany(x => (Enumerable.Range(3, 20/*0, new Random(x).Next(3, 25)*/)
                 .Select(r => new BookReview(r + x, x))))
             .ToArray()
             .ToLookup(x => x.BookId);
